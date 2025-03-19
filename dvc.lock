@@ -5,8 +5,8 @@ stages:
     deps:
     - path: data/raw_dataset.csv
       hash: md5
-      md5: 00f83b0a47b4ec73864cc8b0120e78c8
-      size: 4355
+      md5: 3c6141f970c5aac157ced82531f532b2
+      size: 4487
     - path: src/preprocess.py
       hash: md5
       md5: 6c6791cde8d774b52142497d754d7364
@@ -14,15 +14,15 @@ stages:
     outs:
     - path: data/processed_dataset.csv
       hash: md5
-      md5: e22e48c9806f4f5b351f8909f71ff5f3
-      size: 4646
+      md5: decf22cfedbf5abe122e0795da2767c9
+      size: 4788
   feature_engineering:
     cmd: python src/features.py
     deps:
     - path: data/processed_dataset.csv
       hash: md5
-      md5: e22e48c9806f4f5b351f8909f71ff5f3
-      size: 4646
+      md5: decf22cfedbf5abe122e0795da2767c9
+      size: 4788
     - path: src/features.py
       hash: md5
       md5: c88f652d065aeeef2a1f417b8a177f49
@@ -30,30 +30,30 @@ stages:
     outs:
     - path: data/features.csv
       hash: md5
-      md5: b5b67e6c204771a6efb787467dad154c
-      size: 5608
+      md5: 75966906444538d9d49852132dd2c7a8
+      size: 5782
   train:
     cmd: python src/train.py
     deps:
     - path: data/features.csv
       hash: md5
-      md5: b5b67e6c204771a6efb787467dad154c
-      size: 5608
+      md5: 75966906444538d9d49852132dd2c7a8
+      size: 5782
     - path: src/train.py
       hash: md5
-      md5: b0ed25a9d480777a414639f741841bbe
-      size: 607
+      md5: 383a8838d3fd681c2446804412579111
+      size: 1841
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 0f508581aab6197f94d8d1ab9c02400d
+      md5: 9bd70c6f6560d87a5f8c40df6800a5f3
       size: 1231
   evaluate:
     cmd: python src/evaluate.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: 0f508581aab6197f94d8d1ab9c02400d
+      md5: 9bd70c6f6560d87a5f8c40df6800a5f3
       size: 1231
     - path: src/evaluate.py
       hash: md5
@@ -62,5 +62,5 @@ stages:
     outs:
     - path: metrics.txt
       hash: md5
-      md5: 2bea1b376ee97f4c0c29249a911eb7b8
-      size: 29
+      md5: 7bf1428ecae8ebd4665db14c769dbe57
+      size: 30

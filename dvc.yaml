@@ -1,0 +1,29 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - data/raw_dataset.csv
+    - src/preprocess.py
+    outs:
+    - data/processed_dataset.csv
+  feature_engineering:
+    cmd: python src/features.py
+    deps:
+    - data/processed_dataset.csv
+    - src/features.py
+    outs:
+    - data/features.csv
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/features.csv
+    - src/train.py
+    outs:
+    - models/model.pkl
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - models/model.pkl
+    - src/evaluate.py
+    outs:
+    - metrics.txt

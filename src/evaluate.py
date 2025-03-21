@@ -3,7 +3,8 @@ import joblib
 from sklearn.metrics import accuracy_score
 
 df = pd.read_csv("data/features.csv")
-X = df.drop(columns=["target"])
+X = df.drop(columns=["target", "new_feature"])  # Exclude 'new_feature' before training
+
 y = df["target"]
 
 model = joblib.load("models/model.pkl")

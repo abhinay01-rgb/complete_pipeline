@@ -1,6 +1,6 @@
 # params.yaml
 model:
-  algorithm: "logistic_regression"  # Change this to 'random_forest' or 'svm' to use other models
+  algorithm: "random_forest"  # Change this to 'random_forest' or 'svm' to use other models
   C: 1.0  # Regularization strength for Logistic Regression (not used for other models)
   max_iter: 100  # Maximum number of iterations for Logistic Regression (not used for other models)
   n_estimators: 100  # Number of trees for Random Forest (used only for RandomForest)

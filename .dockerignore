@@ -1,0 +1,25 @@
+# Ignore version control and metadata
+
+.dvcignore
+
+# Ignore system files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+
+# Ignore environment files
+.env
+.venv/
+venv/
+*.log
+
+# Ignore data and model directories (if they don’t need to be in the image)
+
+
+# Ignore temporary or output files
+*.tmp
+*.cache
+metrics.json
+metrics.txt

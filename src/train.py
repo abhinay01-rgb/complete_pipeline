@@ -22,7 +22,9 @@ gamma = params['model']['gamma']
 
 # Load the dataset
 df = pd.read_csv("data/features.csv")
-X = df.drop(columns=["target"])
+
+X = df.drop(columns=["target", "new_feature"])  # Exclude 'new_feature' before training
+
 y = df["target"]
 
 # Split the dataset into training and testing sets

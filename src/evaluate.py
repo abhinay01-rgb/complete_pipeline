@@ -3,7 +3,7 @@ import joblib
 from sklearn.metrics import accuracy_score
 
 df = pd.read_csv("data/features.csv")
-X = df.drop(columns=["target", "new_feature"])  # Exclude 'new_feature' before training
+X = df.drop(columns=["id","target", "new_feature"])  # Exclude 'new_feature' before training
 
 y = df["target"]
 
@@ -16,13 +16,3 @@ with open("metrics.txt", "w") as f:
 
 print("Model evaluation complete.")
 
-
-import json
-
-metrics = {
-    "accuracy": accuracy,
-    "loss": 1-accuracy
-}
-
-with open("metrics.json", "w") as f:
-    json.dump(metrics, f)

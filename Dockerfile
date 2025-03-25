@@ -33,8 +33,8 @@ RUN git config --global user.email "your-email@example.com" && \
 # Set a non-root user (for better security)
 USER nobody
 
-# Expose Flask port
-EXPOSE 5000
+
 
 # Run the Flask app instead of DVC pipeline
-ENTRYPOINT ["python", "src/app.py"]
+CMD ["python", "src/app.py"]
+

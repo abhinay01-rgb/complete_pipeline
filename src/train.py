@@ -23,7 +23,7 @@ gamma = params['model']['gamma']
 # Load the dataset
 df = pd.read_csv("data/features.csv")
 
-X = df.drop(columns=["target", "new_feature"])  # Exclude 'new_feature' before training
+X = df.drop(columns=["id","target", "new_feature"])  # Exclude 'new_feature' before training
 
 y = df["target"]
 
@@ -47,15 +47,3 @@ model.fit(X_train, y_train)
 joblib.dump(model, "models/model.pkl")
 print(f"{algorithm.capitalize()} model training complete.")
 
-# Optional: Evaluate the model and save metrics
-from sklearn.metrics import accuracy_score
-y_pred = model.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-
-metrics = {
-    "accuracy": accuracy
-}
-
-# Save metrics to a JSON file
-with open("metrics.json", "w") as f:
-    json.dump(metrics, f)

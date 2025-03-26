@@ -20,11 +20,11 @@ RUN pip install --no-cache-dir dvc[all]
 # Copy the entire project
 COPY . .
 
-# Ensure correct permissions for DVC
-RUN chmod -R 777 /app
+# Pull model file using DVC
+RUN dvc pull
 
-# Initialize DVC inside the container (if .dvc is missing)
-RUN if [ ! -d "/app/.dvc" ]; then dvc init; fi
+# Ensure correct permissions for DVC and model
+RUN chmod -R 755 /app/models
 
 # Configure Git inside Docker for DVC remote storage (if needed)
 RUN git config --global user.email "your-email@example.com" && \
@@ -36,5 +36,5 @@ USER nobody
 # Expose Flask port (default: 5000)
 EXPOSE 5000
 
-# Run the Flask app instead of DVC pipeline
+# Run the Flask app
 CMD ["python", "src/app.py"]

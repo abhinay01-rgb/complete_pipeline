@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir dvc[all]
 COPY . .
 
 # Pull model file using DVC
-RUN dvc pull
+RUN dvc pull -v -r myremote models/model.pkl
 
 # Ensure correct permissions for DVC and model
 RUN chmod -R 755 /app/models

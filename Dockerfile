@@ -30,11 +30,11 @@ RUN if [ ! -d "/app/.dvc" ]; then dvc init; fi
 RUN git config --global user.email "your-email@example.com" && \
     git config --global user.name "Your Name"
 
-# Set a non-root user (for better security)
+# Set a non-root user for better security
 USER nobody
 
-
+# Expose Flask port (default: 5000)
+EXPOSE 5000
 
 # Run the Flask app instead of DVC pipeline
 CMD ["python", "src/app.py"]
-
